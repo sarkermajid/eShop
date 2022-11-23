@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
 
-    private $brand, $brands;
+    private $brand, $brands, $products;
     /**
      * Display a listing of the resource.
      *
@@ -88,5 +89,11 @@ class BrandController extends Controller
     {
         Brand::deleteBrand($id);
         return redirect('/brand')->with('message_delete', 'Brand delete successfully');
+    }
+
+    public function details($id)
+    {
+        $this->products = Product::where('brand_id',$id)->get();
+        return view('brand.details',['products'=>$this->products]);
     }
 }

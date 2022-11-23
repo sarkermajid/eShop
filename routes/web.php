@@ -21,6 +21,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // category route
 
 Route::resource('/category',CategoryController::class);
+Route::get('category/details/{id}', [CategoryController::class, 'details'])->name('category.details');
+
 
 // brand route
 

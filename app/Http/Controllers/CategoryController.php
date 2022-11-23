@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
 
-    private $categories, $category;
+    private $categories, $category, $products;
     /**
      * Display a listing of the resource.
      *
@@ -88,5 +89,11 @@ class CategoryController extends Controller
     {
         Category::deleteCategory($id);
         return redirect('/category')->with('message_delete', 'Category delete successfully');
+    }
+
+    public function details($id)
+    {
+        $this->products = Product::where('category_id',$id)->get();
+        return view('category.details',['products'=>$this->products]);
     }
 }

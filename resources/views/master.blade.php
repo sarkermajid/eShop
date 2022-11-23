@@ -12,7 +12,7 @@
 </head>
 <body style="background-color: #bdc3c7">
 
-<nav class="navbar navbar-expand-md bg-dark py-3 navbar-dark shadow">
+<nav class="navbar navbar-expand-md bg-dark py-3 navbar-dark shadow-lg">
     <div class="container">
         <a href="" class="navbar-brand">Ecommerce Project</a>
         <ul class="navbar-nav">
