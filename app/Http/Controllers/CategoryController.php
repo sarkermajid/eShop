@@ -96,4 +96,9 @@ class CategoryController extends Controller
         $this->products = Product::where('category_id',$id)->get();
         return view('category.details',['products'=>$this->products]);
     }
+
+    public function allCategory()
+    {
+        return view('category.allcategories',['categories'=> Category::all()]);
+    }
 }

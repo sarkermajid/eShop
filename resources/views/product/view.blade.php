@@ -35,6 +35,10 @@
                                     <td>{{ $product->code }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Product Price</th>
+                                    <td>{{ $product->price }}</td>
+                                </tr>
+                                <tr>
                                     <th>Product Image</th>
                                     <td><img src="{{ asset($product->image) }}" alt="" height="50" width="70"></td>
                                 </tr>

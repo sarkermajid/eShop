@@ -19,6 +19,7 @@
                                     <th>Category Name</th>
                                     <th>Brand Name</th>
                                     <th>Description</th>
+                                    <th>Price</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
@@ -31,6 +32,7 @@
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->brand->name }}</td>
                                         <td>{{ substr($product->description, '0','50').'...' }}</td>
+                                        <td>{{ $product->price }}</td>
                                         <td><img src="{{ asset($product->image) }}" alt="" height="50" width="70"></td>
                                         <td>
                                             <a href="{{ route('product.show', $product->id) }}" class="btn btn-info btn-sm">View</a>

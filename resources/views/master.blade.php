@@ -12,11 +12,16 @@
 </head>
 <body style="background-color: #bdc3c7">
 
-<nav class="navbar navbar-expand-md bg-dark py-3 navbar-dark shadow-lg">
+
+<nav class="navbar navbar-expand-md bg-dark py-4 navbar-dark shadow-lg">
     <div class="container">
-        <a href="" class="navbar-brand">Ecommerce Project</a>
+        @if(isset(Auth::user()->id))
+        <a href="{{ route('dashboard') }}" class="navbar-brand fw-bold"  style="font-family: cursive; color: #f39c12">Admin Panel</a>
+        @else
+        <a href="{{ route('home') }}" class="navbar-brand fw-bold" style="font-family: cursive; color: #2ecc71">Ecommerce Project</a>
+        @endif
         <ul class="navbar-nav">
-            <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+            @if(isset(Auth::user()->id))
             <li class="dropdown">
                 <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
                 <ul class="dropdown-menu">
@@ -38,6 +43,22 @@
                     <li><a href="{{ route('product.index') }}" class="dropdown-item">Manage Product</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ route('product.create') }}" onclick="event.preventDefault(); document.getElementById('logoutForm').submit()" class="dropdown-item">Logout</a></li>
+                    <form action="{{ route('logout') }}" method="post" id="logoutForm">
+                        @csrf
+                    </form>
+                </ul>
+            </li>
+            @else
+            <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ route('product.all') }}" class="nav-link">Products</a></li>
+            <li><a href="{{ route('category.all') }}" class="nav-link">Categories</a></li>
+            <li><a href="{{ route('brand.all') }}" class="nav-link">Brands</a></li>
+            <li><a href="" class="nav-link">Cart</a></li>
+            @endif
         </ul>
     </div>
 </nav>

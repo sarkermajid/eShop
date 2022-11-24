@@ -29,6 +29,7 @@ class Product extends Model
         self::$product->title = $request->title;
         self::$product->description = $request->description;
         self::$product->code = $request->code;
+        self::$product->price = $request->price;
         self::$product->image = self::getImageUrl($request);
         self::$product->save();
     }
@@ -63,6 +64,7 @@ class Product extends Model
         self::$product->title = $request->title;
         self::$product->description = $request->description;
         self::$product->code = $request->code;
+        self::$product->price = $request->price;
         self::$product->image = self::$imgUrl;
         self::$product->save();
     }

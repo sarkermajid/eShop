@@ -102,4 +102,9 @@ class ProductController extends Controller
         $this->product = Product::find($id);
         return view('product.details',['product'=>$this->product]);
     }
+
+    public function allProduct()
+    {
+        return view('product.allproducts',['products'=> Product::all()]);
+    }
 }

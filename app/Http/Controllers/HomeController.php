@@ -13,9 +13,9 @@ class HomeController extends Controller
     private $products,$brands,$categories;
     public function index()
     {
-        $this->products = Product::all();
-        $this->categories = Category::all();
-        $this->brands = Brand::all();
+        $this->products = Product::orderBy('id','desc')->take(3)->get();
+        $this->categories = Category::orderBy('id','desc')->take(3)->get();
+        $this->brands = Brand::orderBy('id','desc')->take(3)->get();
         return view('home.index',['products'=>$this->products, 'categories'=>$this->categories, 'brands'=>$this->brands]);
     }
 }

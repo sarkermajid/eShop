@@ -96,4 +96,9 @@ class BrandController extends Controller
         $this->products = Product::where('brand_id',$id)->get();
         return view('brand.details',['products'=>$this->products]);
     }
+
+    public function allBrand()
+    {
+        return view('brand.allbrands',['brands'=>Brand::all()]);
+    }
 }
