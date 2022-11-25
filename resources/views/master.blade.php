@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="{{ asset('/') }}css/all.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/style.css">
 </head>
-<body style="background-color: #bdc3c7">
+<body style="background-color: #bdc3c7;">
 
 
-<nav class="navbar navbar-expand-md bg-dark py-4 navbar-dark shadow-lg">
+<nav class="navbar navbar-expand-md bg-dark py-3 navbar-dark shadow-lg">
     <div class="container">
         @if(isset(Auth::user()->id))
         <a href="{{ route('dashboard') }}" class="navbar-brand fw-bold"  style="font-family: cursive; color: #f39c12">Admin Panel</a>
         @else
-        <a href="{{ route('home') }}" class="navbar-brand fw-bold" style="font-family: cursive; color: #2ecc71">Ecommerce Project</a>
+        <a href="{{ route('home') }}" class="navbar-brand fw-bold" style="font-family: cursive; color: #2ecc71"><span class="h2" style="color: red">e</span>Shop</a>
         @endif
         <ul class="navbar-nav">
             @if(isset(Auth::user()->id))
@@ -65,6 +65,16 @@
 
 
 @yield('body')
+
+<footer class="footer-section py-2 bg-dark text-white border-top" style="margin-top: 300px;">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="lead mt-3"> &copy; Copyright 2022 eShop - All Rights Reserved by <a href="https://facebook.com/sarkermajid21" class="text-decoration-none text-danger">Sarker Majid</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script src="{{ asset('/') }}js/bootstrap.bundle.js"></script>
 <script src="{{ asset('/') }}js/jquery-3.6.1.min.js"></script>
