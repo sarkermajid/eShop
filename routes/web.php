@@ -26,6 +26,8 @@ Route::get('/product/all', [ProductController::class, 'allProduct'])->name('prod
 Route::get('/category/all', [CategoryController::class, 'allCategory'])->name('category.all');
 Route::get('/brand/all', [BrandController::class, 'allBrand'])->name('brand.all');
 Route::post('/add-to-cart',[ProductController::class, 'addToCart'])->name('addToCart');
+Route::get('/view-cart',[ProductController::class, 'viewCart'])->name('viewCart');
+Route::get('/remove-cart/{id}',[ProductController::class, 'removeCart'])->name('removeCart');
 
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {

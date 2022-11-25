@@ -58,6 +58,14 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-3">
+                                        <label for="">Price</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="text" value="{{ $product->price }}" class="form-control" name="price">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
                                         <label for="">Image</label>
                                     </div>
                                     <div class="col-md-9">

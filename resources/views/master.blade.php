@@ -57,7 +57,7 @@
             <li><a href="{{ route('product.all') }}" class="nav-link">Products</a></li>
             <li><a href="{{ route('category.all') }}" class="nav-link">Categories</a></li>
             <li><a href="{{ route('brand.all') }}" class="nav-link">Brands</a></li>
-            <li><a href="" class="nav-link">Cart</a></li>
+            <li><a href="{{ route('viewCart') }}" class="nav-link">Cart</a></li>
             @endif
         </ul>
     </div>

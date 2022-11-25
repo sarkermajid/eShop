@@ -6,6 +6,7 @@
         <div class="container">
             <div class="row mb-3">
                 <p class="display-5 fw-bold text-center text-decoration-underline pb-3" style="font-family: cursive">All Products</p>
+                <h4 class="text-center text-success pb-3">{{ Session::get('message_cart') }}</h4>
                 @foreach($products as $product)
                     <div class="col-md-4 mb-3">
                         <div class="card card-body bg-dark text-white h-100">

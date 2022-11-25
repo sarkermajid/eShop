@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -106,5 +107,48 @@ class ProductController extends Controller
     public function allProduct()
     {
         return view('product.allproducts',['products'=> Product::all()]);
+    }
+
+    public function addToCart(Request $request)
+    {
+        $id = $request->has('id')? $request->get('id'):'';
+        $title = $request->has('title')? $request->get('title'):'';
+        $quantity = $request->has('quantity')? $request->get('quantity'):'';
+        $price = $request->has('price')? $request->get('price'):'';
+
+//        $cart = new Cart();
+//        Cart::add($id, $title, $quantity, $price);
+//        Cart::update($cart->rowId, ['qty'=>$quantity]);
+//        return redirect()->back()->with('message','Product add to cart successfully');
+
+        $cart = Cart::content()->where('id',$id)->first();
+        if(isset($cart) && $cart!=null)
+        {
+            $quantity = (int)$quantity + (int)$cart->qty;
+            $total = ((int)$quantity * (int)$price);
+            Cart::update($cart->rowId, ['qty'=>$quantity, 'options' => ['total'=>$total]]);
+            return redirect('/product/all')->with('message_cart', 'Product update add to cart');
+        }
+        else
+        {
+            $total = ((int)$quantity * (int)$price);
+            Cart::add($id, $title, $quantity, $price, ['total'=>$total]);
+
+            return redirect('/product/all')->with('message_cart','Product add to cart successfully');
+        }
+    }
+
+    public function viewCart()
+    {
+        $carts = Cart::content();
+        $subtotal = Cart::subtotal();
+        return view('cart.index',['carts'=>$carts, 'subtotal'=>$subtotal]);
+    }
+
+    public function removeCart($rowId)
+    {
+        Cart::remove($rowId);
+        return redirect()->back()->with('message_delete', 'Product remove successfully');
+
     }
 }
