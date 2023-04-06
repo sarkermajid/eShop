@@ -1,1 +1,1 @@
-<a href="https://www.youtube.com/watch?v=9Dfdn1i6Tq4">Details Video</a>
+https://www.linkedin.com/posts/sarkermajid_laravelframework-phplaravel-ecommercewebsite-activity-7001957972293672960-kdFb?utm_source=share&utm_medium=member_desktop
